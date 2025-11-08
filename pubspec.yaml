@@ -1,0 +1,48 @@
+name: afrifounders
+description: "A Flutter app for item management with Clean Architecture"
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # --- State Management ---
+  flutter_riverpod:
+  riverpod_annotation:
+
+  # --- Data Classes ---
+  freezed_annotation:
+  json_annotation:
+
+  # --- Storage ---
+  hive:
+  hive_flutter:
+
+  # --- Utilities ---
+  uuid:
+  dartz:
+  equatable:
+
+  # --- UI ---
+  flutter_slidable:
+  google_fonts:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  analyzer:
+
+  # --- Code Generation ---
+  build_runner:
+  freezed:
+  json_serializable:
+  riverpod_generator:
+  hive_generator:
+
+flutter:
+  uses-material-design: true
