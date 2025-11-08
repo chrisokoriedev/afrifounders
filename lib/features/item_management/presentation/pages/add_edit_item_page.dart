@@ -78,6 +78,7 @@ class _AddEditItemPageState extends ConsumerState<AddEditItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           widget.item == null ? AppStrings.addItem : AppStrings.editItem,
         ),
