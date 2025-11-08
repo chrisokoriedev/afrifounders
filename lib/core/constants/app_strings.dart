@@ -37,6 +37,15 @@ class AppStrings {
   static const String retry = 'Retry';
   static const String unknownError = 'An unknown error occurred';
 
+  // Success messages
+  static const String itemAddedSuccessfully = 'Item added successfully';
+  static const String itemUpdatedSuccessfully = 'Item updated successfully';
+
+  // Unsaved changes
+  static const String unsavedChanges = 'Unsaved Changes';
+  static const String unsavedChangesMessage = 'You have unsaved changes. Are you sure you want to leave?';
+  static const String discard = 'Discard';
+
   // Delete Confirmation
   static const String deleteConfirmation = 'Delete Item';
   static const String deleteConfirmationMessage = 'Are you sure you want to delete this item?';

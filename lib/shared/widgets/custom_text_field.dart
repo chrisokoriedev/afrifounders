@@ -12,6 +12,9 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool enabled;
   final void Function(String)? onChanged;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
+  final void Function(String)? onFieldSubmitted;
 
   const CustomTextField({
     super.key,
@@ -24,6 +27,9 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
     this.enabled = true,
     this.onChanged,
+    this.focusNode,
+    this.textInputAction,
+    this.onFieldSubmitted,
   });
 
   @override
@@ -36,6 +42,9 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       enabled: enabled,
       onChanged: onChanged,
+      focusNode: focusNode,
+      textInputAction: textInputAction,
+      onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
