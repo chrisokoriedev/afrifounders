@@ -21,7 +21,6 @@ mixin _$Item {
   String? get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  bool get isCompleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
@@ -37,8 +36,7 @@ abstract class $ItemCopyWith<$Res> {
       String title,
       String? description,
       DateTime createdAt,
-      DateTime updatedAt,
-      bool isCompleted});
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -59,7 +57,6 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? description = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? isCompleted = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -82,10 +79,6 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isCompleted: null == isCompleted
-          ? _value.isCompleted
-          : isCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -102,8 +95,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       String title,
       String? description,
       DateTime createdAt,
-      DateTime updatedAt,
-      bool isCompleted});
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -121,7 +113,6 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? isCompleted = null,
   }) {
     return _then(_$ItemImpl(
       id: null == id
@@ -144,10 +135,6 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isCompleted: null == isCompleted
-          ? _value.isCompleted
-          : isCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -160,8 +147,7 @@ class _$ItemImpl implements _Item {
       required this.title,
       this.description,
       required this.createdAt,
-      required this.updatedAt,
-      this.isCompleted = false});
+      required this.updatedAt});
 
   @override
   final String id;
@@ -173,13 +159,10 @@ class _$ItemImpl implements _Item {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
-  @override
-  @JsonKey()
-  final bool isCompleted;
 
   @override
   String toString() {
-    return 'Item(id: $id, title: $title, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, isCompleted: $isCompleted)';
+    return 'Item(id: $id, title: $title, description: $description, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -194,14 +177,12 @@ class _$ItemImpl implements _Item {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.isCompleted, isCompleted) ||
-                other.isCompleted == isCompleted));
+                other.updatedAt == updatedAt));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, description, createdAt, updatedAt, isCompleted);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, description, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -216,8 +197,7 @@ abstract class _Item implements Item {
       required final String title,
       final String? description,
       required final DateTime createdAt,
-      required final DateTime updatedAt,
-      final bool isCompleted}) = _$ItemImpl;
+      required final DateTime updatedAt}) = _$ItemImpl;
 
   @override
   String get id;
@@ -229,8 +209,6 @@ abstract class _Item implements Item {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
-  @override
-  bool get isCompleted;
   @override
   @JsonKey(ignore: true)
   _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>

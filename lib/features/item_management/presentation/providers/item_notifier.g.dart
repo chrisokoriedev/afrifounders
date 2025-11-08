@@ -6,7 +6,7 @@ part of 'item_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$itemNotifierHash() => r'aa7a32778c659331a15e2416e0361536dcdae8d8';
+String _$itemNotifierHash() => r'1e794aacbad7eb805de314b3fe477cafe724bf01';
 
 /// Item notifier managing CRUD operations
 ///

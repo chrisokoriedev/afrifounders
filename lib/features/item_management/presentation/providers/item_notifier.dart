@@ -101,7 +101,6 @@ class ItemNotifier extends _$ItemNotifier {
       description: description,
       createdAt: now,
       updatedAt: now,
-      isCompleted: false,
     );
 
     final addItemUseCase = ref.read(addItemProvider);

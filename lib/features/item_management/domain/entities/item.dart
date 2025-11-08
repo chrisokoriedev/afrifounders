@@ -11,7 +11,6 @@ class Item with _$Item {
     String? description,
     required DateTime createdAt,
     required DateTime updatedAt,
-    @Default(false) bool isCompleted,
   }) = _Item;
 }
 

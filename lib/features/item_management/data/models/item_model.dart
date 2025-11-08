@@ -44,7 +44,6 @@ class ItemModel extends HiveObject {
       description: description,
       createdAt: createdAt,
       updatedAt: updatedAt,
-      isCompleted: isCompleted,
     );
   }
 
@@ -56,7 +55,6 @@ class ItemModel extends HiveObject {
       description: item.description,
       createdAt: item.createdAt,
       updatedAt: item.updatedAt,
-      isCompleted: item.isCompleted,
     );
   }
 }
