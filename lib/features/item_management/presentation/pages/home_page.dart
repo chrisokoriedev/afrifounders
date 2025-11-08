@@ -136,53 +136,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
               ),
             ),
-            // Filter chips
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimensions.spacingM,
-              ),
-              child: Row(
-                children: [
-                  FilterChip(
-                    label: const Text(AppStrings.filterAll),
-                    selected: itemState.filter == ItemFilter.all,
-                    onSelected: (selected) {
-                      if (selected) {
-                        ref
-                            .read(itemNotifierProvider.notifier)
-                            .setFilter(ItemFilter.all);
-                      }
-                    },
-                  ),
-                  SizedBox(width: AppDimensions.spacingS),
-                  FilterChip(
-                    label: const Text(AppStrings.filterPending),
-                    selected: itemState.filter == ItemFilter.pending,
-                    onSelected: (selected) {
-                      if (selected) {
-                        ref
-                            .read(itemNotifierProvider.notifier)
-                            .setFilter(ItemFilter.pending);
-                      }
-                    },
-                  ),
-                  SizedBox(width: AppDimensions.spacingS),
-                  FilterChip(
-                    label: const Text(AppStrings.filterCompleted),
-                    selected: itemState.filter == ItemFilter.completed,
-                    onSelected: (selected) {
-                      if (selected) {
-                        ref
-                            .read(itemNotifierProvider.notifier)
-                            .setFilter(ItemFilter.completed);
-                      }
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: AppDimensions.spacingS),
             // Items list
             Expanded(
               child: _buildBody(context, ref, itemState),
@@ -228,7 +181,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
               SizedBox(height: AppDimensions.spacingS),
               Text(
-                'Try adjusting your search or filter',
+                'Try adjusting your search',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),

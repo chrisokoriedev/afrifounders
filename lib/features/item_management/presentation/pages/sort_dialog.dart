@@ -78,23 +78,6 @@ class SortDialog extends ConsumerWidget {
               Navigator.of(context).pop();
             },
           ),
-          ListTile(
-            title: const Text(AppStrings.sortCompletion),
-            leading: Radio<ItemSort>(
-              value: ItemSort.completionStatus,
-              groupValue: state.sortBy,
-              onChanged: (value) {
-                if (value != null) {
-                  ref.read(itemNotifierProvider.notifier).setSort(value);
-                  Navigator.of(context).pop();
-                }
-              },
-            ),
-            onTap: () {
-              ref.read(itemNotifierProvider.notifier).setSort(ItemSort.completionStatus);
-              Navigator.of(context).pop();
-            },
-          ),
         ],
       ),
       actions: [

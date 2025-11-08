@@ -43,15 +43,11 @@ class AppStrings {
   static const String confirm = 'Confirm';
   static const String no = 'No';
 
-  // Search and Filter
+  // Search and Sort
   static const String searchHint = 'Search items...';
-  static const String filterAll = 'All';
-  static const String filterCompleted = 'Completed';
-  static const String filterPending = 'Pending';
   static const String sortBy = 'Sort by';
   static const String sortDateCreated = 'Date Created';
   static const String sortDateUpdated = 'Date Updated';
   static const String sortTitle = 'Title';
-  static const String sortCompletion = 'Completion Status';
 }
 

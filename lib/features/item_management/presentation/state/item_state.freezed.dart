@@ -21,7 +21,6 @@ mixin _$ItemState {
   bool get isLoading => throw _privateConstructorUsedError;
   Failure? get error => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
-  ItemFilter get filter => throw _privateConstructorUsedError;
   ItemSort get sortBy => throw _privateConstructorUsedError;
   SortOrder get sortOrder => throw _privateConstructorUsedError;
 
@@ -41,7 +40,6 @@ abstract class $ItemStateCopyWith<$Res> {
       bool isLoading,
       Failure? error,
       String searchQuery,
-      ItemFilter filter,
       ItemSort sortBy,
       SortOrder sortOrder});
 }
@@ -64,7 +62,6 @@ class _$ItemStateCopyWithImpl<$Res, $Val extends ItemState>
     Object? isLoading = null,
     Object? error = freezed,
     Object? searchQuery = null,
-    Object? filter = null,
     Object? sortBy = null,
     Object? sortOrder = null,
   }) {
@@ -89,10 +86,6 @@ class _$ItemStateCopyWithImpl<$Res, $Val extends ItemState>
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
-      filter: null == filter
-          ? _value.filter
-          : filter // ignore: cast_nullable_to_non_nullable
-              as ItemFilter,
       sortBy: null == sortBy
           ? _value.sortBy
           : sortBy // ignore: cast_nullable_to_non_nullable
@@ -119,7 +112,6 @@ abstract class _$$ItemStateImplCopyWith<$Res>
       bool isLoading,
       Failure? error,
       String searchQuery,
-      ItemFilter filter,
       ItemSort sortBy,
       SortOrder sortOrder});
 }
@@ -140,7 +132,6 @@ class __$$ItemStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = freezed,
     Object? searchQuery = null,
-    Object? filter = null,
     Object? sortBy = null,
     Object? sortOrder = null,
   }) {
@@ -165,10 +156,6 @@ class __$$ItemStateImplCopyWithImpl<$Res>
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
-      filter: null == filter
-          ? _value.filter
-          : filter // ignore: cast_nullable_to_non_nullable
-              as ItemFilter,
       sortBy: null == sortBy
           ? _value.sortBy
           : sortBy // ignore: cast_nullable_to_non_nullable
@@ -190,7 +177,6 @@ class _$ItemStateImpl implements _ItemState {
       this.isLoading = false,
       this.error,
       this.searchQuery = '',
-      this.filter = ItemFilter.all,
       this.sortBy = ItemSort.dateUpdated,
       this.sortOrder = SortOrder.descending})
       : _items = items,
@@ -224,9 +210,6 @@ class _$ItemStateImpl implements _ItemState {
   final String searchQuery;
   @override
   @JsonKey()
-  final ItemFilter filter;
-  @override
-  @JsonKey()
   final ItemSort sortBy;
   @override
   @JsonKey()
@@ -234,7 +217,7 @@ class _$ItemStateImpl implements _ItemState {
 
   @override
   String toString() {
-    return 'ItemState(items: $items, filteredItems: $filteredItems, isLoading: $isLoading, error: $error, searchQuery: $searchQuery, filter: $filter, sortBy: $sortBy, sortOrder: $sortOrder)';
+    return 'ItemState(items: $items, filteredItems: $filteredItems, isLoading: $isLoading, error: $error, searchQuery: $searchQuery, sortBy: $sortBy, sortOrder: $sortOrder)';
   }
 
   @override
@@ -250,7 +233,6 @@ class _$ItemStateImpl implements _ItemState {
             (identical(other.error, error) || other.error == error) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
-            (identical(other.filter, filter) || other.filter == filter) &&
             (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
             (identical(other.sortOrder, sortOrder) ||
                 other.sortOrder == sortOrder));
@@ -264,7 +246,6 @@ class _$ItemStateImpl implements _ItemState {
       isLoading,
       error,
       searchQuery,
-      filter,
       sortBy,
       sortOrder);
 
@@ -282,7 +263,6 @@ abstract class _ItemState implements ItemState {
       final bool isLoading,
       final Failure? error,
       final String searchQuery,
-      final ItemFilter filter,
       final ItemSort sortBy,
       final SortOrder sortOrder}) = _$ItemStateImpl;
 
@@ -296,8 +276,6 @@ abstract class _ItemState implements ItemState {
   Failure? get error;
   @override
   String get searchQuery;
-  @override
-  ItemFilter get filter;
   @override
   ItemSort get sortBy;
   @override

@@ -37,7 +37,7 @@ class ItemNotifier extends _$ItemNotifier {
     );
   }
 
-  /// Apply search, filter, and sort to items
+  /// Apply search and sort to items
   void _applyFilters() {
     List<Item> filtered = List.from(state.items);
 
@@ -48,18 +48,6 @@ class ItemNotifier extends _$ItemNotifier {
         return item.title.toLowerCase().contains(query) ||
             (item.description?.toLowerCase().contains(query) ?? false);
       }).toList();
-    }
-
-    // Apply filter
-    switch (state.filter) {
-      case ItemFilter.completed:
-        filtered = filtered.where((item) => item.isCompleted).toList();
-        break;
-      case ItemFilter.pending:
-        filtered = filtered.where((item) => !item.isCompleted).toList();
-        break;
-      case ItemFilter.all:
-        break;
     }
 
     // Apply sort
@@ -75,9 +63,6 @@ class ItemNotifier extends _$ItemNotifier {
         case ItemSort.title:
           comparison = a.title.compareTo(b.title);
           break;
-        case ItemSort.completionStatus:
-          comparison = a.isCompleted.toString().compareTo(b.isCompleted.toString());
-          break;
       }
       return state.sortOrder == SortOrder.ascending ? comparison : -comparison;
     });
@@ -88,12 +73,6 @@ class ItemNotifier extends _$ItemNotifier {
   /// Set search query
   void setSearchQuery(String query) {
     state = state.copyWith(searchQuery: query);
-    _applyFilters();
-  }
-
-  /// Set filter
-  void setFilter(ItemFilter filter) {
-    state = state.copyWith(filter: filter);
     _applyFilters();
   }
 

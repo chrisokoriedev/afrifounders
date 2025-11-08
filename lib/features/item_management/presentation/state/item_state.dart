@@ -4,19 +4,11 @@ import '../../../../core/error/failures.dart';
 
 part 'item_state.freezed.dart';
 
-/// Filter options for items
-enum ItemFilter {
-  all,
-  completed,
-  pending,
-}
-
 /// Sort options for items
 enum ItemSort {
   dateCreated,
   dateUpdated,
   title,
-  completionStatus,
 }
 
 /// Sort order
@@ -34,7 +26,6 @@ class ItemState with _$ItemState {
     @Default(false) bool isLoading,
     Failure? error,
     @Default('') String searchQuery,
-    @Default(ItemFilter.all) ItemFilter filter,
     @Default(ItemSort.dateUpdated) ItemSort sortBy,
     @Default(SortOrder.descending) SortOrder sortOrder,
   }) = _ItemState;
