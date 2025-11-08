@@ -218,9 +218,6 @@ class _HomePageState extends ConsumerState<HomePage> {
           child: ItemListTile(
             item: item,
             onTap: () => _navigateToAddEditPage(context, item: item),
-            onToggleComplete: () {
-              ref.read(itemNotifierProvider.notifier).toggleItemCompletion(item);
-            },
             onDelete: () => _showDeleteConfirmation(context, item, ref),
           ),
         );

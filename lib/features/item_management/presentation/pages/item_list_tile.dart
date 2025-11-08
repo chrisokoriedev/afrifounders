@@ -4,18 +4,16 @@ import '../../domain/entities/item.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
-/// Item list tile widget with checkbox and swipe to delete
+/// Item list tile widget with swipe to delete
 class ItemListTile extends StatefulWidget {
   final Item item;
   final VoidCallback onTap;
-  final VoidCallback onToggleComplete;
   final VoidCallback onDelete;
 
   const ItemListTile({
     super.key,
     required this.item,
     required this.onTap,
-    required this.onToggleComplete,
     required this.onDelete,
   });
 
@@ -72,22 +70,8 @@ class _ItemListTileState extends State<ItemListTile>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: ListTile(
-            leading: Checkbox(
-              value: widget.item.isCompleted,
-              onChanged: (_) => widget.onToggleComplete(),
-            ),
             title: Text(
               widget.item.title,
-              style: TextStyle(
-                decoration:
-                    widget.item.isCompleted ? TextDecoration.lineThrough : null,
-                color: widget.item.isCompleted
-                    ? Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.6)
-                    : null,
-              ),
             ),
             subtitle: widget.item.description != null &&
                     widget.item.description!.isNotEmpty
@@ -96,18 +80,10 @@ class _ItemListTileState extends State<ItemListTile>
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      decoration: widget.item.isCompleted
-                          ? TextDecoration.lineThrough
-                          : null,
-                      color: widget.item.isCompleted
-                          ? Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withValues(alpha: 0.6)
-                          : Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withValues(alpha: 0.7),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withValues(alpha: 0.7),
                     ),
                   )
                 : null,

@@ -151,13 +151,5 @@ class ItemNotifier extends _$ItemNotifier {
     );
   }
 
-  /// Toggle item completion status
-  Future<void> toggleItemCompletion(Item item) async {
-    final updatedItem = item.copyWith(
-      isCompleted: !item.isCompleted,
-      updatedAt: DateTime.now(),
-    );
-    await updateItem(updatedItem);
-  }
 }
 
