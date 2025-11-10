@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/constants/app_strings.dart';
 import 'core/theme/app_theme.dart';
 import 'features/item_management/data/models/item_model.dart';
-import 'features/item_management/presentation/pages/home_page.dart';
+import 'features/item_management/presentation/pages/task_home_page.dart';
 import 'shared/providers/theme_provider.dart';
 
 void main() async {
@@ -36,7 +36,7 @@ class MainApp extends ConsumerWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: const HomePage(),
+      home: const TaskHomePage(),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'item.freezed.dart';
 
-/// Item entity representing a business object
+/// Item entity representing a task
 @freezed
 class Item with _$Item {
   const factory Item({
@@ -11,6 +11,11 @@ class Item with _$Item {
     String? description,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @Default(false) bool isCompleted,
+    String? clientName,
+    int? timeEstimateMinutes,
+    String? timeOfDay, // 'morning' or 'afternoon'
+    DateTime? scheduledDate,
   }) = _Item;
 }
 

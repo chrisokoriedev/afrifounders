@@ -23,13 +23,17 @@ class ItemModelAdapter extends TypeAdapter<ItemModel> {
       createdAt: fields[3] as DateTime,
       updatedAt: fields[4] as DateTime,
       isCompleted: fields[5] as bool,
+      clientName: fields[6] as String?,
+      timeEstimateMinutes: fields[7] as int?,
+      timeOfDay: fields[8] as String?,
+      scheduledDate: fields[9] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ItemModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +45,15 @@ class ItemModelAdapter extends TypeAdapter<ItemModel> {
       ..writeByte(4)
       ..write(obj.updatedAt)
       ..writeByte(5)
-      ..write(obj.isCompleted);
+      ..write(obj.isCompleted)
+      ..writeByte(6)
+      ..write(obj.clientName)
+      ..writeByte(7)
+      ..write(obj.timeEstimateMinutes)
+      ..writeByte(8)
+      ..write(obj.timeOfDay)
+      ..writeByte(9)
+      ..write(obj.scheduledDate);
   }
 
   @override

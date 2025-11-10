@@ -26,6 +26,7 @@ dependencies:
   uuid:
   dartz:
   equatable:
+  intl:
 
   # --- UI ---
   flutter_slidable:

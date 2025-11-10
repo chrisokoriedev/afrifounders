@@ -27,6 +27,18 @@ class ItemModel extends HiveObject {
   @HiveField(5)
   final bool isCompleted;
 
+  @HiveField(6)
+  final String? clientName;
+
+  @HiveField(7)
+  final int? timeEstimateMinutes;
+
+  @HiveField(8)
+  final String? timeOfDay;
+
+  @HiveField(9)
+  final DateTime? scheduledDate;
+
   ItemModel({
     required this.id,
     required this.title,
@@ -34,6 +46,10 @@ class ItemModel extends HiveObject {
     required this.createdAt,
     required this.updatedAt,
     this.isCompleted = false,
+    this.clientName,
+    this.timeEstimateMinutes,
+    this.timeOfDay,
+    this.scheduledDate,
   });
 
   /// Convert ItemModel to Item entity
@@ -44,6 +60,11 @@ class ItemModel extends HiveObject {
       description: description,
       createdAt: createdAt,
       updatedAt: updatedAt,
+      isCompleted: isCompleted,
+      clientName: clientName,
+      timeEstimateMinutes: timeEstimateMinutes,
+      timeOfDay: timeOfDay,
+      scheduledDate: scheduledDate,
     );
   }
 
@@ -55,6 +76,11 @@ class ItemModel extends HiveObject {
       description: item.description,
       createdAt: item.createdAt,
       updatedAt: item.updatedAt,
+      isCompleted: item.isCompleted,
+      clientName: item.clientName,
+      timeEstimateMinutes: item.timeEstimateMinutes,
+      timeOfDay: item.timeOfDay,
+      scheduledDate: item.scheduledDate,
     );
   }
 }

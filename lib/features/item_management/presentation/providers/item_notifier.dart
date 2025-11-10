@@ -150,5 +150,14 @@ class ItemNotifier extends _$ItemNotifier {
     );
   }
 
+  /// Toggle task completion status
+  Future<void> toggleTaskCompletion(Item item) async {
+    final updatedItem = item.copyWith(
+      isCompleted: !item.isCompleted,
+      updatedAt: DateTime.now(),
+    );
+    await updateItem(updatedItem);
+  }
+
 }
 
