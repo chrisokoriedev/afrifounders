@@ -17,8 +17,7 @@ class TaskItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final surfaceColor = isDark ? const Color(0xFF1E1E1E) : const Color(0xFFE8E8E8);
+    final surfaceColor = theme.colorScheme.surfaceVariant;
 
     // Build task description
     final taskDescription = _buildTaskDescription(theme);

@@ -12,8 +12,7 @@ class TaskHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final surfaceColor = isDark ? const Color(0xFF1E1E1E) : const Color(0xFFE0E0E0);
+    final surfaceColor = theme.colorScheme.surfaceVariant;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),

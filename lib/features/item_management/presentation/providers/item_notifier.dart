@@ -117,21 +117,42 @@ class ItemNotifier extends _$ItemNotifier {
     );
   }
 
-  /// Update an existing item
+  /// Update an existing item or add a new one
   Future<void> updateItem(Item item) async {
     final updatedItem = item.copyWith(updatedAt: DateTime.now());
-    final updateItemUseCase = ref.read(updateItemProvider);
-    final result = await updateItemUseCase(updatedItem);
-    result.fold(
-      (failure) => state = state.copyWith(error: failure),
-      (updated) {
-        state = state.copyWith(
-          items: state.items.map((i) => i.id == updated.id ? updated : i).toList(),
-          error: null,
-        );
-        _applyFilters();
-      },
-    );
+    
+    // Check if item exists in the list
+    final itemExists = state.items.any((i) => i.id == item.id);
+    
+    if (itemExists) {
+      // Update existing item
+      final updateItemUseCase = ref.read(updateItemProvider);
+      final result = await updateItemUseCase(updatedItem);
+      result.fold(
+        (failure) => state = state.copyWith(error: failure),
+        (updated) {
+          state = state.copyWith(
+            items: state.items.map((i) => i.id == updated.id ? updated : i).toList(),
+            error: null,
+          );
+          _applyFilters();
+        },
+      );
+    } else {
+      // Add new item
+      final addItemUseCase = ref.read(addItemProvider);
+      final result = await addItemUseCase(updatedItem);
+      result.fold(
+        (failure) => state = state.copyWith(error: failure),
+        (addedItem) {
+          state = state.copyWith(
+            items: [...state.items, addedItem],
+            error: null,
+          );
+          _applyFilters();
+        },
+      );
+    }
   }
 
   /// Delete an item

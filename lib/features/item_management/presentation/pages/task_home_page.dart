@@ -45,7 +45,7 @@ class _TaskHomePageState extends ConsumerState<TaskHomePage> {
     final completedCount = selectedDateTasks.where((t) => t.isCompleted).length;
 
     return Scaffold(
-      backgroundColor: isDark ? const Color(0xFF121212) : const Color(0xFFF5F5F5),
+      backgroundColor: theme.colorScheme.background,
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
