@@ -12,8 +12,6 @@ class Item with _$Item {
     required DateTime createdAt,
     required DateTime updatedAt,
     @Default(false) bool isCompleted,
-    String? clientName,
-    int? timeEstimateMinutes,
     String? timeOfDay, // 'morning' or 'afternoon'
     DateTime? scheduledDate,
   }) = _Item;

@@ -20,14 +20,7 @@ class TaskItemWidget extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF1E1E1E) : const Color(0xFFE8E8E8);
 
-    // Format time estimate
-    final timeText = task.timeEstimateMinutes != null
-        ? task.timeEstimateMinutes! >= 60
-            ? '${(task.timeEstimateMinutes! / 60).toStringAsFixed(0)} hr'
-            : '${task.timeEstimateMinutes} min'
-        : null;
-
-    // Build task description with @client format
+    // Build task description
     final taskDescription = _buildTaskDescription(theme);
 
     return GestureDetector(
@@ -73,25 +66,6 @@ class TaskItemWidget extends StatelessWidget {
             Expanded(
               child: taskDescription,
             ),
-
-            // Time badge
-            if (timeText != null) ...[
-              const SizedBox(width: 12),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceVariant.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  timeText,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
           ],
         ),
       ),
@@ -99,47 +73,18 @@ class TaskItemWidget extends StatelessWidget {
   }
 
   Widget _buildTaskDescription(ThemeData theme) {
-    final clientName = task.clientName;
     final title = task.title;
 
-    if (clientName != null && clientName.isNotEmpty) {
-      // Format: @client: task description
-      return RichText(
-        text: TextSpan(
-          style: theme.textTheme.bodyLarge?.copyWith(
-            color: task.isCompleted
-                ? theme.colorScheme.onSurfaceVariant.withOpacity(0.6)
-                : theme.colorScheme.onSurface,
-            decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-          ),
-          children: [
-            TextSpan(
-              text: '@$clientName',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: task.isCompleted
-                    ? theme.colorScheme.onSurfaceVariant.withOpacity(0.6)
-                    : theme.colorScheme.primary,
-              ),
-            ),
-            TextSpan(
-              text: ': $title',
-            ),
-          ],
-        ),
-      );
-    } else {
-      // Just show the title
-      return Text(
-        title,
-        style: theme.textTheme.bodyLarge?.copyWith(
-          color: task.isCompleted
-              ? theme.colorScheme.onSurfaceVariant.withOpacity(0.6)
-              : theme.colorScheme.onSurface,
-          decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-        ),
-      );
-    }
+    // Just show the title
+    return Text(
+      title,
+      style: theme.textTheme.bodyLarge?.copyWith(
+        color: task.isCompleted
+            ? theme.colorScheme.onSurfaceVariant.withOpacity(0.6)
+            : theme.colorScheme.onSurface,
+        decoration: task.isCompleted ? TextDecoration.lineThrough : null,
+      ),
+    );
   }
 }
 

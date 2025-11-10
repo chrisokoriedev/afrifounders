@@ -22,8 +22,6 @@ mixin _$Item {
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
-  String? get clientName => throw _privateConstructorUsedError;
-  int? get timeEstimateMinutes => throw _privateConstructorUsedError;
   String? get timeOfDay =>
       throw _privateConstructorUsedError; // 'morning' or 'afternoon'
   DateTime? get scheduledDate => throw _privateConstructorUsedError;
@@ -44,8 +42,6 @@ abstract class $ItemCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       bool isCompleted,
-      String? clientName,
-      int? timeEstimateMinutes,
       String? timeOfDay,
       DateTime? scheduledDate});
 }
@@ -69,8 +65,6 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? isCompleted = null,
-    Object? clientName = freezed,
-    Object? timeEstimateMinutes = freezed,
     Object? timeOfDay = freezed,
     Object? scheduledDate = freezed,
   }) {
@@ -99,14 +93,6 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      clientName: freezed == clientName
-          ? _value.clientName
-          : clientName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timeEstimateMinutes: freezed == timeEstimateMinutes
-          ? _value.timeEstimateMinutes
-          : timeEstimateMinutes // ignore: cast_nullable_to_non_nullable
-              as int?,
       timeOfDay: freezed == timeOfDay
           ? _value.timeOfDay
           : timeOfDay // ignore: cast_nullable_to_non_nullable
@@ -133,8 +119,6 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       bool isCompleted,
-      String? clientName,
-      int? timeEstimateMinutes,
       String? timeOfDay,
       DateTime? scheduledDate});
 }
@@ -155,8 +139,6 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? isCompleted = null,
-    Object? clientName = freezed,
-    Object? timeEstimateMinutes = freezed,
     Object? timeOfDay = freezed,
     Object? scheduledDate = freezed,
   }) {
@@ -185,14 +167,6 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      clientName: freezed == clientName
-          ? _value.clientName
-          : clientName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timeEstimateMinutes: freezed == timeEstimateMinutes
-          ? _value.timeEstimateMinutes
-          : timeEstimateMinutes // ignore: cast_nullable_to_non_nullable
-              as int?,
       timeOfDay: freezed == timeOfDay
           ? _value.timeOfDay
           : timeOfDay // ignore: cast_nullable_to_non_nullable
@@ -215,8 +189,6 @@ class _$ItemImpl implements _Item {
       required this.createdAt,
       required this.updatedAt,
       this.isCompleted = false,
-      this.clientName,
-      this.timeEstimateMinutes,
       this.timeOfDay,
       this.scheduledDate});
 
@@ -234,10 +206,6 @@ class _$ItemImpl implements _Item {
   @JsonKey()
   final bool isCompleted;
   @override
-  final String? clientName;
-  @override
-  final int? timeEstimateMinutes;
-  @override
   final String? timeOfDay;
 // 'morning' or 'afternoon'
   @override
@@ -245,7 +213,7 @@ class _$ItemImpl implements _Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, title: $title, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, isCompleted: $isCompleted, clientName: $clientName, timeEstimateMinutes: $timeEstimateMinutes, timeOfDay: $timeOfDay, scheduledDate: $scheduledDate)';
+    return 'Item(id: $id, title: $title, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, isCompleted: $isCompleted, timeOfDay: $timeOfDay, scheduledDate: $scheduledDate)';
   }
 
   @override
@@ -263,10 +231,6 @@ class _$ItemImpl implements _Item {
                 other.updatedAt == updatedAt) &&
             (identical(other.isCompleted, isCompleted) ||
                 other.isCompleted == isCompleted) &&
-            (identical(other.clientName, clientName) ||
-                other.clientName == clientName) &&
-            (identical(other.timeEstimateMinutes, timeEstimateMinutes) ||
-                other.timeEstimateMinutes == timeEstimateMinutes) &&
             (identical(other.timeOfDay, timeOfDay) ||
                 other.timeOfDay == timeOfDay) &&
             (identical(other.scheduledDate, scheduledDate) ||
@@ -274,18 +238,8 @@ class _$ItemImpl implements _Item {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      description,
-      createdAt,
-      updatedAt,
-      isCompleted,
-      clientName,
-      timeEstimateMinutes,
-      timeOfDay,
-      scheduledDate);
+  int get hashCode => Object.hash(runtimeType, id, title, description,
+      createdAt, updatedAt, isCompleted, timeOfDay, scheduledDate);
 
   @JsonKey(ignore: true)
   @override
@@ -302,8 +256,6 @@ abstract class _Item implements Item {
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final bool isCompleted,
-      final String? clientName,
-      final int? timeEstimateMinutes,
       final String? timeOfDay,
       final DateTime? scheduledDate}) = _$ItemImpl;
 
@@ -319,10 +271,6 @@ abstract class _Item implements Item {
   DateTime get updatedAt;
   @override
   bool get isCompleted;
-  @override
-  String? get clientName;
-  @override
-  int? get timeEstimateMinutes;
   @override
   String? get timeOfDay;
   @override // 'morning' or 'afternoon'

@@ -43,13 +43,6 @@ class _TaskHomePageState extends ConsumerState<TaskHomePage> {
 
     // Calculate statistics
     final completedCount = selectedDateTasks.where((t) => t.isCompleted).length;
-    final completedTimeMinutes = selectedDateTasks
-        .where((t) => t.isCompleted)
-        .fold<int>(0, (sum, t) => sum + (t.timeEstimateMinutes ?? 0));
-    final totalEstimatedMinutes = selectedDateTasks
-        .fold<int>(0, (sum, t) => sum + (t.timeEstimateMinutes ?? 0));
-    final totalEstimatedHours = totalEstimatedMinutes / 60.0;
-    final completedHours = completedTimeMinutes / 60.0;
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF121212) : const Color(0xFFF5F5F5),
@@ -64,8 +57,6 @@ class _TaskHomePageState extends ConsumerState<TaskHomePage> {
               SliverToBoxAdapter(
                 child: TaskHeaderWidget(
                   completedCount: completedCount,
-                  completedHours: completedHours,
-                  totalEstimatedHours: totalEstimatedHours,
                 ),
               ),
 

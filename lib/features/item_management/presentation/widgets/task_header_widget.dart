@@ -3,14 +3,10 @@ import 'package:flutter/material.dart';
 /// Header widget showing "today" title and status indicators
 class TaskHeaderWidget extends StatelessWidget {
   final int completedCount;
-  final double completedHours;
-  final double totalEstimatedHours;
 
   const TaskHeaderWidget({
     super.key,
     required this.completedCount,
-    required this.completedHours,
-    required this.totalEstimatedHours,
   });
 
   @override
@@ -34,24 +30,11 @@ class TaskHeaderWidget extends StatelessWidget {
             ),
           ),
 
-          // Status indicators
-          Row(
-            children: [
-              // Completed count
-              _StatusPill(
-                icon: Icons.check_circle_outline,
-                text: '$completedCount',
-                backgroundColor: surfaceColor,
-              ),
-              const SizedBox(width: 12),
-
-              // Time spent
-              _StatusPill(
-                icon: Icons.access_time,
-                text: '${completedHours.toStringAsFixed(1)} of ${totalEstimatedHours.toStringAsFixed(1)} hrs',
-                backgroundColor: surfaceColor,
-              ),
-            ],
+          // Status indicator
+          _StatusPill(
+            icon: Icons.check_circle_outline,
+            text: '$completedCount',
+            backgroundColor: surfaceColor,
           ),
         ],
       ),
