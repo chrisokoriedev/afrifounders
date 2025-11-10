@@ -6,6 +6,7 @@ import '../widgets/task_header_widget.dart';
 import '../widgets/date_selector_widget.dart';
 import '../widgets/task_sections_widget.dart';
 import '../widgets/navigation_helper.dart';
+import '../pages/delete_confirmation_dialog.dart';
 import '../../domain/entities/item.dart';
 
 /// Task-focused home page with date selector and task sections
@@ -19,11 +20,14 @@ class TaskHomePage extends ConsumerStatefulWidget {
 class _TaskHomePageState extends ConsumerState<TaskHomePage> {
   DateTime _selectedDate = DateTime.now();
 
+  void _showDeleteConfirmation(BuildContext context, Item item, WidgetRef ref) {
+    DeleteConfirmationDialog.show(context, item, ref);
+  }
+
   @override
   Widget build(BuildContext context) {
     final itemState = ref.watch(itemNotifierProvider);
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     // Filter tasks for selected date
     final selectedDateTasks = itemState.items.where((item) {
@@ -82,6 +86,9 @@ class _TaskHomePageState extends ConsumerState<TaskHomePage> {
                   onTaskTap: (task) {
                     // Navigate to edit page
                     NavigationHelper.navigateToAddEditPage(context, item: task);
+                  },
+                  onTaskDelete: (task) {
+                    _showDeleteConfirmation(context, task, ref);
                   },
                 ),
               ),

@@ -7,12 +7,14 @@ class TaskSectionsWidget extends StatelessWidget {
   final List<Item> tasks;
   final Function(Item) onTaskToggle;
   final Function(Item) onTaskTap;
+  final Function(Item) onTaskDelete;
 
   const TaskSectionsWidget({
     super.key,
     required this.tasks,
     required this.onTaskToggle,
     required this.onTaskTap,
+    required this.onTaskDelete,
   });
 
   @override
@@ -43,6 +45,7 @@ class TaskSectionsWidget extends StatelessWidget {
                     task: task,
                     onToggle: () => onTaskToggle(task),
                     onTap: () => onTaskTap(task),
+                    onDelete: () => onTaskDelete(task),
                   ),
                 )),
             const SizedBox(height: 24),
@@ -61,6 +64,7 @@ class TaskSectionsWidget extends StatelessWidget {
                     task: task,
                     onToggle: () => onTaskToggle(task),
                     onTap: () => onTaskTap(task),
+                    onDelete: () => onTaskDelete(task),
                   ),
                 )),
           ],
@@ -73,6 +77,7 @@ class TaskSectionsWidget extends StatelessWidget {
                     task: task,
                     onToggle: () => onTaskToggle(task),
                     onTap: () => onTaskTap(task),
+                    onDelete: () => onTaskDelete(task),
                   ),
                 )),
           ],

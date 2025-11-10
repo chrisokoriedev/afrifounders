@@ -6,13 +6,11 @@ import '../constants/app_colors.dart';
 class AppTheme {
   AppTheme._();
 
-  /// Light theme
+  /// Light theme (White background, black text)
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.lightPrimary,
-        brightness: Brightness.light,
+      colorScheme: const ColorScheme.light(
         primary: AppColors.lightPrimary,
         onPrimary: AppColors.lightOnPrimary,
         primaryContainer: AppColors.lightPrimaryContainer,
@@ -35,6 +33,8 @@ class AppTheme {
         onSurfaceVariant: AppColors.lightOnSurfaceVariant,
         outline: AppColors.lightOutline,
         outlineVariant: AppColors.lightOutlineVariant,
+        background: AppColors.lightBackground,
+        onBackground: AppColors.lightOnBackground,
       ),
       textTheme: GoogleFonts.interTextTheme(),
       iconTheme: const IconThemeData(),
@@ -66,13 +66,11 @@ class AppTheme {
     );
   }
 
-  /// Dark theme
+  /// Dark theme (Black background, white text)
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.darkPrimary,
-        brightness: Brightness.dark,
+      colorScheme: const ColorScheme.dark(
         primary: AppColors.darkPrimary,
         onPrimary: AppColors.darkOnPrimary,
         primaryContainer: AppColors.darkPrimaryContainer,
@@ -95,6 +93,8 @@ class AppTheme {
         onSurfaceVariant: AppColors.darkOnSurfaceVariant,
         outline: AppColors.darkOutline,
         outlineVariant: AppColors.darkOutlineVariant,
+        background: AppColors.darkBackground,
+        onBackground: AppColors.darkOnBackground,
       ),
       textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme),
       iconTheme: const IconThemeData(),

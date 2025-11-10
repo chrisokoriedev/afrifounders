@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../domain/entities/item.dart';
 
-/// Task item widget with checkbox, @client format, and time badge
+/// Task item widget with checkbox, swipe-to-delete, and time badge
 class TaskItemWidget extends StatelessWidget {
   final Item task;
   final VoidCallback onToggle;
   final VoidCallback onTap;
+  final VoidCallback onDelete;
 
   const TaskItemWidget({
     super.key,
     required this.task,
     required this.onToggle,
     required this.onTap,
+    required this.onDelete,
   });
 
   @override
@@ -22,50 +25,66 @@ class TaskItemWidget extends StatelessWidget {
     // Build task description
     final taskDescription = _buildTaskDescription(theme);
 
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: surfaceColor,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          children: [
-            // Checkbox
-            GestureDetector(
-              onTap: onToggle,
-              child: Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
+    return Slidable(
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        extentRatio: 0.25,
+        children: [
+          SlidableAction(
+            onPressed: (_) => onDelete(),
+            backgroundColor: theme.colorScheme.error,
+            foregroundColor: theme.colorScheme.onError,
+            icon: Icons.delete,
+            label: 'Delete',
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ],
+      ),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: surfaceColor,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              // Checkbox
+              GestureDetector(
+                onTap: onToggle,
+                child: Container(
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: task.isCompleted
+                          ? theme.colorScheme.primary
+                          : theme.colorScheme.onSurfaceVariant,
+                      width: 2,
+                    ),
                     color: task.isCompleted
                         ? theme.colorScheme.primary
-                        : theme.colorScheme.onSurfaceVariant,
-                    width: 2,
+                        : Colors.transparent,
                   ),
-                  color: task.isCompleted
-                      ? theme.colorScheme.primary
-                      : Colors.transparent,
+                  child: task.isCompleted
+                      ? Icon(
+                          Icons.check,
+                          size: 16,
+                          color: theme.colorScheme.onPrimary,
+                        )
+                      : null,
                 ),
-                child: task.isCompleted
-                    ? Icon(
-                        Icons.check,
-                        size: 16,
-                        color: theme.colorScheme.onPrimary,
-                      )
-                    : null,
               ),
-            ),
-            const SizedBox(width: 16),
+              const SizedBox(width: 16),
 
-            // Task description
-            Expanded(
-              child: taskDescription,
-            ),
-          ],
+              // Task description
+              Expanded(
+                child: taskDescription,
+              ),
+            ],
+          ),
         ),
       ),
     );

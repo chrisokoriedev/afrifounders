@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../shared/providers/theme_provider.dart';
 
 /// Header widget showing "today" title and status indicators
-class TaskHeaderWidget extends StatelessWidget {
+class TaskHeaderWidget extends ConsumerWidget {
   final int completedCount;
 
   const TaskHeaderWidget({
@@ -10,9 +12,10 @@ class TaskHeaderWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final surfaceColor = theme.colorScheme.surfaceVariant;
+    final isDarkMode = ref.watch(themeModeNotifierProvider);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
@@ -29,11 +32,32 @@ class TaskHeaderWidget extends StatelessWidget {
             ),
           ),
 
-          // Status indicator
-          _StatusPill(
-            icon: Icons.check_circle_outline,
-            text: '$completedCount',
-            backgroundColor: surfaceColor,
+          // Status indicator and theme switcher
+          Row(
+            children: [
+              // Status indicator
+              _StatusPill(
+                icon: Icons.check_circle_outline,
+                text: '$completedCount',
+                backgroundColor: surfaceColor,
+              ),
+              const SizedBox(width: 12),
+
+              // Theme switcher
+              IconButton(
+                onPressed: () {
+                  ref.read(themeModeNotifierProvider.notifier).toggleTheme();
+                },
+                icon: Icon(
+                  isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                ),
+                tooltip: isDarkMode ? 'Switch to light mode' : 'Switch to dark mode',
+                style: IconButton.styleFrom(
+                  backgroundColor: surfaceColor,
+                  foregroundColor: theme.colorScheme.onSurface,
+                ),
+              ),
+            ],
           ),
         ],
       ),
