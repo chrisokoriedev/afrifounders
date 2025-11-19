@@ -6,6 +6,9 @@ A Flutter application for item management with CRUD operations, built using Clea
 
 This app demonstrates a production-ready Flutter application following Clean Architecture principles. It allows users to create, read, update, and delete items with local persistence using Hive.
 
+## 📱Google Drive apk Link 
+https://drive.google.com/file/d/1H1iebMEAg5GLEZ9IstYWiTZq8Tc7C6k6/view?usp=sharing
+
 ### Architecture Principles
 
 - **Dependency Rule**: Dependencies flow inward (Presentation → Domain ← Data)
